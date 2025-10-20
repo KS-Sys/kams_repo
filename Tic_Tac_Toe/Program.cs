@@ -14,8 +14,6 @@ namespace Tic_Tac_Toe
         public static char opponent_token = 'O';
         static void Main(string[] args)
         {
-            string Player_1 = null;
-            string Player_2 = null;
 
             int selection = 0;
             Console.WriteLine("welcome to tic tac toe" + "\n" + "Please choose the player options below");
@@ -48,7 +46,32 @@ namespace Tic_Tac_Toe
             Console.WriteLine("enter number where you would like to add your token");
             token_text = Console.ReadLine();
             token_num = int.Parse(token_text);
-            
+
+            switch (token_num)
+            {
+                case 1:
+                    DebugBoard[0,0] = player_token; 
+                    break;
+                case 2:
+                    DebugBoard[0,1] = player_token;
+                    break;
+                case 3:
+                    DebugBoard[0,2] = player_token;
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9
+                    break;
+            }
+
         }
         /// <summary>
         /// Private methods should be sufficent for now as the code is accessible in the same class
