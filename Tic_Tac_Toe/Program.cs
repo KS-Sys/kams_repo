@@ -29,6 +29,7 @@ namespace Tic_Tac_Toe
                     {
                         Board_scan();
                         Play_Game();
+                        ai_Opponent();
                     } while (Board_scan() == false);
                     Call_Board();
                     break;
@@ -40,6 +41,41 @@ namespace Tic_Tac_Toe
             }
         }
 
+        private static void ai_Opponent()
+        {
+            Random tM = new Random();
+            int token_num = tM.Next(1, 9); 
+            switch (token_num)
+            {
+                case 1:
+                    DebugBoard[0, 0] = o_Token;
+                    break;
+                case 2:
+                    DebugBoard[0, 1] = o_Token;
+                    break;
+                case 3:
+                    DebugBoard[0, 2] = o_Token;
+                    break;
+                case 4:
+                    DebugBoard[1, 0] = o_Token;
+                    break;
+                case 5:
+                    DebugBoard[1, 1] = o_Token;
+                    break;
+                case 6:
+                    DebugBoard[1, 2] = o_Token;
+                    break;
+                case 7:
+                    DebugBoard[2, 0] = o_Token;
+                    break;
+                case 8:
+                    DebugBoard[2, 1] = o_Token;
+                    break;
+                case 9:
+                    DebugBoard[2, 2] = o_Token;
+                    break;
+            }
+        }
         /// <summary>
         /// the method below scans the board if any of the tokens match to make a row.
         /// the method only works for the X token at the moment.
