@@ -8,8 +8,10 @@ namespace Tic_Tac_Toe
 {
     internal class Program
     {
-        public static int[,] Game_Board = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
         public static float Board_number;
+        public static char[,] DebugBoard = new char[3,3];
+        public static char player_token = 'X';
+        public static char opponent_token = 'O';
         static void Main(string[] args)
         {
             string Player_1 = null;
@@ -25,8 +27,8 @@ namespace Tic_Tac_Toe
             switch (selection)
             {
                 case 1:
-                    Token(Player_1);
                     Play_Game();
+                    }
                     break;
                 case 2:
                     break;
@@ -48,9 +50,7 @@ namespace Tic_Tac_Toe
             token_text = Console.ReadLine();
             token_num = int.Parse(token_text);
 
-            if (token_num == Game_Board.Length)
             {
-                Console.WriteLine("token placed");
             }
 
         }
@@ -60,11 +60,8 @@ namespace Tic_Tac_Toe
         /// </summary>
         private static void Call_Board()
         {
-            for (int y = 0; y < Game_Board.GetLength(0); y++)
             {
-                for (int x = 0; x < Game_Board.GetLength(1); x++)
                 {
-                    Console.Write("[" + Game_Board[y, x] + "]");
                 }
                 Console.Write("\n");
             }
