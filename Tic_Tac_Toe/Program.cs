@@ -10,8 +10,8 @@ namespace Tic_Tac_Toe
     {
         public static float Board_number;
         public static char[,] DebugBoard = new char[3,3];
-        public static char player_token = 'X';
-        public static char opponent_token = 'O';
+        public static char x_Token = 'X';
+        public static char o_Token = 'O';
         static void Main(string[] args)
         {
 
@@ -25,7 +25,12 @@ namespace Tic_Tac_Toe
             switch (selection)
             {
                 case 1:
-                    Play_Game();
+                    do
+                    {
+                        Board_scan();
+                        Play_Game();
+                    } while (Board_scan() == false);
+                    Call_Board();
                     break;
                 case 2:
                     break;
@@ -33,6 +38,59 @@ namespace Tic_Tac_Toe
                     Call_Board();
                     break;
             }
+        }
+
+        /// <summary>
+        /// the method below scans the board if any of the tokens match to make a row.
+        /// the method only works for the X token at the moment.
+        /// </summary>
+        /// <returns></returns>
+        private static bool Board_scan()
+        {
+            // player tokens vertical
+            if (DebugBoard[0, 0] == x_Token && DebugBoard[0, 1] == x_Token && DebugBoard[0, 2] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            if (DebugBoard[1, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[1, 2] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            if (DebugBoard[2, 0] == x_Token && DebugBoard[2, 1] == x_Token && DebugBoard[2, 2] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            // player tokens horizontal
+            if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 0] == x_Token && DebugBoard[2, 0] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            if (DebugBoard[0, 1] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 1] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 2] == x_Token && DebugBoard[2, 2] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            // player tokens diagonal
+            if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 2] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 0] == x_Token)
+            {
+                Console.WriteLine("you won the game");
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -50,31 +108,31 @@ namespace Tic_Tac_Toe
             switch (token_num)
             {
                 case 1:
-                    DebugBoard[0,0] = player_token; 
+                    DebugBoard[0,0] = x_Token; 
                     break;
                 case 2:
-                    DebugBoard[0,1] = player_token;
+                    DebugBoard[0,1] = x_Token;
                     break;
                 case 3:
-                    DebugBoard[0,2] = player_token;
+                    DebugBoard[0,2] = x_Token;
                     break;
                 case 4:
-                    DebugBoard[1,0] = player_token;
+                    DebugBoard[1,0] = x_Token;
                     break;
                 case 5:
-                    DebugBoard[1,1] = player_token;
+                    DebugBoard[1,1] = x_Token;
                     break;
                 case 6:
-                    DebugBoard[1, 2] = player_token;
+                    DebugBoard[1, 2] = x_Token;
                     break;
                 case 7:
-                    DebugBoard[2, 0] = player_token;
+                    DebugBoard[2, 0] = x_Token;
                     break;
                 case 8:
-                    DebugBoard[2, 1] = player_token;
+                    DebugBoard[2, 1] = x_Token;
                     break;
                 case 9:
-                    DebugBoard[2, 2] = player_token;
+                    DebugBoard[2, 2] = x_Token;
                     break;
             }
 
