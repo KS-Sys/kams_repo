@@ -59,16 +59,22 @@ namespace Tic_Tac_Toe
                     DebugBoard[0,2] = player_token;
                     break;
                 case 4:
+                    DebugBoard[1,0] = player_token;
                     break;
                 case 5:
+                    DebugBoard[1,1] = player_token;
                     break;
                 case 6:
+                    DebugBoard[1, 2] = player_token;
                     break;
                 case 7:
+                    DebugBoard[2, 0] = player_token;
                     break;
                 case 8:
+                    DebugBoard[2, 1] = player_token;
                     break;
-                case 9
+                case 9:
+                    DebugBoard[2, 2] = player_token;
                     break;
             }
 
