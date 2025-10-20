@@ -28,7 +28,6 @@ namespace Tic_Tac_Toe
             {
                 case 1:
                     Play_Game();
-                    }
                     break;
                 case 2:
                     break;
@@ -49,10 +48,7 @@ namespace Tic_Tac_Toe
             Console.WriteLine("enter number where you would like to add your token");
             token_text = Console.ReadLine();
             token_num = int.Parse(token_text);
-
-            {
-            }
-
+            
         }
         /// <summary>
         /// Private methods should be sufficent for now as the code is accessible in the same class
@@ -60,8 +56,11 @@ namespace Tic_Tac_Toe
         /// </summary>
         private static void Call_Board()
         {
+            for(int y = 0; y < 3; y++)
             {
+                for(int x = 0; x < 3; x++)
                 {
+                    Console.Write("[" + DebugBoard[y, x] + "]");
                 }
                 Console.Write("\n");
             }
