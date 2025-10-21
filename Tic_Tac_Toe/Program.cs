@@ -16,29 +16,48 @@ namespace Tic_Tac_Toe
         static void Main(string[] args)
         {
 
+            bool playGame = true;
             int selection = 0;
-            Console.WriteLine("welcome to tic tac toe" + "\n" + "Please choose the player options below");
-            Console.WriteLine("1 - Player 1 game" + "\n" + "2 - Player 2 game" + "\n" + "3 - Debug Board");
-
-            string s = Console.ReadLine();
-            selection = int.Parse(s);
-
-            switch (selection)
+            while (playGame == true)
             {
-                case 1:
-                    do
-                    {
-                        Board_scan();
-                        Play_Game();
-                        ai_Opponent();
-                    } while (Board_scan() == false);
-                    Call_Board();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    Call_Board();
-                    break;
+                Console.WriteLine("welcome to tic tac toe" + "\n" + "Please choose the player options below");
+                Console.WriteLine("1 - Player 1 game" + "\n" + "2 - Player 2 game" + "\n" + "3 - Debug Board");
+                
+                try
+                {
+                    string s = Console.ReadLine();
+                    selection = int.Parse(s);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("the selection does not exist: " + e);
+                }
+
+                switch (selection)
+                {
+                    case 1:
+                        do
+                        {
+                            Console.Clear();
+                            Board_scan();
+                            Play_Game();
+                            ai_Opponent();
+                        } while (Board_scan() == false);
+                        Call_Board();
+                        break;
+                    case 2:
+                        Console.WriteLine("Option disabled");
+                        break;
+                    case 3:
+                        Call_Board();
+                        break;
+                }
+                Console.WriteLine("would you like to play again, Y/N?");
+                string r = Console.ReadLine();
+                if (r == "N")
+                {
+                    playGame = false;
+                }
             }
         }
 
@@ -108,83 +127,83 @@ namespace Tic_Tac_Toe
                 Console.WriteLine("you won the game");
                 return true;
             }
-            if (DebugBoard[1, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[1, 2] == x_Token)
+            else if (DebugBoard[1, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[1, 2] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
-            if (DebugBoard[2, 0] == x_Token && DebugBoard[2, 1] == x_Token && DebugBoard[2, 2] == x_Token)
+            else if (DebugBoard[2, 0] == x_Token && DebugBoard[2, 1] == x_Token && DebugBoard[2, 2] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
             // player tokens horizontal
-            if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 0] == x_Token && DebugBoard[2, 0] == x_Token)
+            else if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 0] == x_Token && DebugBoard[2, 0] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
-            if (DebugBoard[0, 1] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 1] == x_Token)
+            else if (DebugBoard[0, 1] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 1] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
-            if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 2] == x_Token && DebugBoard[2, 2] == x_Token)
+            else if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 2] == x_Token && DebugBoard[2, 2] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
             // player tokens diagonal
-            if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 2] == x_Token)
+            else if (DebugBoard[0, 0] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 2] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
-            if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 0] == x_Token)
+            else if (DebugBoard[0, 2] == x_Token && DebugBoard[1, 1] == x_Token && DebugBoard[2, 0] == x_Token)
             {
                 Console.WriteLine("you won the game");
                 return true;
             }
 
             // o Tokens vertical
-            if (DebugBoard[0, 0] == o_Token && DebugBoard[0, 1] == o_Token && DebugBoard[0, 2] == o_Token)
+            else if (DebugBoard[0, 0] == o_Token && DebugBoard[0, 1] == o_Token && DebugBoard[0, 2] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
-            if (DebugBoard[1, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[1, 2] == o_Token)
+            else if (DebugBoard[1, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[1, 2] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
-            if (DebugBoard[2, 0] == o_Token && DebugBoard[2, 1] == o_Token && DebugBoard[2, 2] == o_Token)
+            else if (DebugBoard[2, 0] == o_Token && DebugBoard[2, 1] == o_Token && DebugBoard[2, 2] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
             // player tokens horizontal
-            if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 0] == o_Token && DebugBoard[2, 0] == o_Token)
+            else if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 0] == o_Token && DebugBoard[2, 0] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
-            if (DebugBoard[0, 1] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 1] == o_Token)
+            else if (DebugBoard[0, 1] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 1] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
-            if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 2] == o_Token && DebugBoard[2, 2] == o_Token)
+            else if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 2] == o_Token && DebugBoard[2, 2] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
             // player tokens diagonal
-            if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 2] == o_Token)
+            else if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 2] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
             }
-            if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 0] == o_Token)
+            else if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 0] == o_Token)
             {
                 Console.WriteLine("player O won the game");
                 return true;
