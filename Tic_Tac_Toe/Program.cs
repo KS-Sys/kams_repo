@@ -8,10 +8,11 @@ namespace Tic_Tac_Toe
 {
     internal class Program
     {
-        public static float Board_number;
+        //public static float Board_number;
         public static char[,] DebugBoard = new char[3,3];
         public static char x_Token = 'X';
         public static char o_Token = 'O';
+        public static List<int> filled_POS = new List<int>(); 
         static void Main(string[] args)
         {
 
@@ -43,42 +44,60 @@ namespace Tic_Tac_Toe
 
         private static void ai_Opponent()
         {
+            revert:
             Random tM = new Random();
-            int token_num = tM.Next(1, 9); 
+            int token_num = tM.Next(1, 9);
+            for (int i = 0; i < filled_POS.Count; i++)
+            {
+                if (filled_POS[i] == token_num)
+                {
+                    goto revert;
+                }
+            }
+
             switch (token_num)
             {
                 case 1:
                     DebugBoard[0, 0] = o_Token;
+                    filled_POS.Add(1);
                     break;
                 case 2:
                     DebugBoard[0, 1] = o_Token;
+                    filled_POS.Add(2);
                     break;
                 case 3:
                     DebugBoard[0, 2] = o_Token;
+                    filled_POS.Add(3);
                     break;
                 case 4:
                     DebugBoard[1, 0] = o_Token;
+                    filled_POS.Add(4);
                     break;
                 case 5:
                     DebugBoard[1, 1] = o_Token;
+                    filled_POS.Add(5);
                     break;
                 case 6:
                     DebugBoard[1, 2] = o_Token;
+                    filled_POS.Add(6);
                     break;
                 case 7:
                     DebugBoard[2, 0] = o_Token;
+                    filled_POS.Add(7);
                     break;
                 case 8:
                     DebugBoard[2, 1] = o_Token;
+                    filled_POS.Add(8);
                     break;
                 case 9:
                     DebugBoard[2, 2] = o_Token;
+                    filled_POS.Add(9);
                     break;
             }
         }
         /// <summary>
         /// the method below scans the board if any of the tokens match to make a row.
-        /// the method only works for the X token at the moment.
+        /// the method only works for both tokens now although i would like to make cleaner code.
         /// </summary>
         /// <returns></returns>
         private static bool Board_scan()
@@ -126,6 +145,50 @@ namespace Tic_Tac_Toe
                 Console.WriteLine("you won the game");
                 return true;
             }
+
+            // o Tokens vertical
+            if (DebugBoard[0, 0] == o_Token && DebugBoard[0, 1] == o_Token && DebugBoard[0, 2] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            if (DebugBoard[1, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[1, 2] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            if (DebugBoard[2, 0] == o_Token && DebugBoard[2, 1] == o_Token && DebugBoard[2, 2] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            // player tokens horizontal
+            if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 0] == o_Token && DebugBoard[2, 0] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            if (DebugBoard[0, 1] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 1] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 2] == o_Token && DebugBoard[2, 2] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            // player tokens diagonal
+            if (DebugBoard[0, 0] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 2] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
+            if (DebugBoard[0, 2] == o_Token && DebugBoard[1, 1] == o_Token && DebugBoard[2, 0] == o_Token)
+            {
+                Console.WriteLine("player O won the game");
+                return true;
+            }
             return false;
         }
 
@@ -137,38 +200,56 @@ namespace Tic_Tac_Toe
             int token_num;
             string token_text;
             Call_Board();
+            revert:
             Console.WriteLine("enter number where you would like to add your token");
             token_text = Console.ReadLine();
             token_num = int.Parse(token_text);
+            for (int i = 0; i < filled_POS.Count; i++)
+            {
+                if(filled_POS[i] == token_num)
+                {
+                    Console.WriteLine("token already placed at this value");
+                    goto revert;
+                }
+            }
 
             switch (token_num)
             {
                 case 1:
-                    DebugBoard[0,0] = x_Token; 
+                    DebugBoard[0, 0] = x_Token;
+                    filled_POS.Add(1);
                     break;
                 case 2:
                     DebugBoard[0,1] = x_Token;
+                    filled_POS.Add(2);
                     break;
                 case 3:
                     DebugBoard[0,2] = x_Token;
+                    filled_POS.Add(3);
                     break;
                 case 4:
                     DebugBoard[1,0] = x_Token;
+                    filled_POS.Add(4);
                     break;
                 case 5:
-                    DebugBoard[1,1] = x_Token;
+                    DebugBoard[1, 1] = x_Token;
+                    filled_POS.Add(5);
                     break;
                 case 6:
                     DebugBoard[1, 2] = x_Token;
+                    filled_POS.Add(6);
                     break;
                 case 7:
                     DebugBoard[2, 0] = x_Token;
+                    filled_POS.Add(7);
                     break;
                 case 8:
                     DebugBoard[2, 1] = x_Token;
+                    filled_POS.Add(8);
                     break;
                 case 9:
                     DebugBoard[2, 2] = x_Token;
+                    filled_POS.Add(9);
                     break;
             }
 
@@ -194,7 +275,7 @@ namespace Tic_Tac_Toe
         /// I am planning to change this to custom tokens when possible
         /// </summary>
         /// <param name="Player_1"></param>
-        private static void Token(string Player_1)
+        /*private static void Token(string Player_1)
         {
             Console.WriteLine("Choose O or X");
             Player_1 = Console.ReadLine();
@@ -213,6 +294,6 @@ namespace Tic_Tac_Toe
             {
                 Console.WriteLine("error");
             }
-        }
+        }*/
     }
 }
