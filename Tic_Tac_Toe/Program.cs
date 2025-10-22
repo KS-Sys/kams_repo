@@ -219,20 +219,29 @@ namespace Tic_Tac_Toe
             int token_num;
             string token_text;
             Call_Board();
-            revert:
+        revert:
             Console.WriteLine("enter number where you would like to add your token");
             token_text = Console.ReadLine();
             token_num = int.Parse(token_text);
             for (int i = 0; i < filled_POS.Count; i++)
             {
-                if(filled_POS[i] == token_num)
+                if (filled_POS[i] == token_num)
                 {
                     Console.WriteLine("token already placed at this value");
                     goto revert;
                 }
             }
 
-            switch (token_num)
+            //used simple math to get rid of that massive switch statement.
+
+            int column_Position = (token_num - 1) / 3;
+            int row_Position = (token_num - 1) % 3;
+
+            DebugBoard[column_Position, row_Position] = x_Token;
+            filled_POS.Add(token_num);
+
+            //the horror bellow created by me.
+            /*switch (token_num)
             {
                 case 1:
                     DebugBoard[0, 0] = x_Token;
@@ -270,7 +279,7 @@ namespace Tic_Tac_Toe
                     DebugBoard[2, 2] = x_Token;
                     filled_POS.Add(9);
                     break;
-            }
+            }*/
 
         }
         /// <summary>
@@ -315,4 +324,5 @@ namespace Tic_Tac_Toe
             }
         }*/
     }
+
 }
