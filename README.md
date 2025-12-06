@@ -1,4 +1,4 @@
-# kams_repo
+# noughts and crosses 
 Hi I am kamaljeet and I am currently a part-time Open University Engineering Student and a full time HGV-Driver. 
 I would love to welcome you to my repo for my personal portifolio of projects where I could demonstrate what I have learned so far.
 Right now a copy of tic_tac_toe written is C# is used as a test project to familiarize myself with github.
